@@ -59,6 +59,8 @@ atlassian-ide-plugin.xml
 # Cursive Clojure plugin
 .idea/replstate.xml
 
+.idea/
+
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
 crashlytics.properties
@@ -211,3 +213,5 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# Mac Apple
+.DS_Store
