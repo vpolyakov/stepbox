@@ -12,11 +12,11 @@ REVIEW_URL = 'https://raw.githubusercontent.com/stepik-a-w/drf-project-boxes/mas
 def assign_status(request_review, reviews):
     status = None
     if request_review['status'] == 'published':
-        status = reviews.PUBLISHED
+        status = reviews.Status.PUBLISHED
     elif request_review['status'] == 'hidden':
-        status = reviews.REJECTED
+        status = reviews.Status.REJECTED
     elif request_review['status'] == 'new':
-        status = reviews.ON_MODERATION
+        status = reviews.Status.ON_MODERATION
     return status
 
 

@@ -215,3 +215,6 @@ cython_debug/
 
 # Mac Apple
 .DS_Store
+
+# Картинки
+*.jpg

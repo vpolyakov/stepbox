@@ -29,6 +29,7 @@ mccabe==0.6.1
 mr-proper==0.0.6
 mypy-extensions==0.4.3
 packaging==20.9
+pep8-naming==0.11.1
 Pillow==8.2.0
 pluggy==0.13.1
 py==1.10.0
