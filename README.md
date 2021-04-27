@@ -12,3 +12,5 @@ Django REST Framework на практике
 Создайте superuser: python manage createsuperuser и измениете его id в БД на 0.
 
 Через консоль выполните первоначальное заполнение БД: python manage import_users, python manage import_items, python manage import_reviews
+
+Проект уже имеет предзаполненную базу данных - суперюзер: admin, пароль: admin.
