@@ -32,7 +32,8 @@ schema_view = get_schema_view(
 )
 
 apipatterns = [
-    path('auth/', include('rest_framework.urls')),  # BasicAuthentication
+    path('auth/', include('rest_framework.urls')),
+    path('docs/', schema_view.with_ui('swagger', cache_timeout=0)),
     path('items/', include('items.urls')),
     path('users/', include('users.urls')),
     path('carts/', include('carts.urls')),
@@ -42,7 +43,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include(debug_toolbar.urls)),
     path('api/v1/', include(apipatterns)),
-    path('docs/', schema_view.with_ui('swagger', cache_timeout=0)),
 ]
 
 if settings.DEBUG:

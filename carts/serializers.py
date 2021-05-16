@@ -30,7 +30,6 @@ class CartItemSerializer(serializers.ModelSerializer):
 
 class CartItemCreateEditSerializer(serializers.ModelSerializer):
     total_price = serializers.SerializerMethodField()
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     item_id = serializers.IntegerField()
 
     class Meta:
@@ -41,7 +40,6 @@ class CartItemCreateEditSerializer(serializers.ModelSerializer):
             'quantity',
             'price',
             'total_price',
-            'user',
         )
         extra_kwargs = {'price': {'read_only': True}}
 
@@ -49,7 +47,7 @@ class CartItemCreateEditSerializer(serializers.ModelSerializer):
         return f'{obj.price * obj.quantity:.2f}'
 
     def create(self, validated_data):
-        user = validated_data.get('user')
+        user = self.context['request'].user
         item = validated_data.get('item_id')
         cart_item = user.cart.cart_items.create(
             item_id=item,
