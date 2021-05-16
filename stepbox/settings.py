@@ -33,6 +33,13 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,12 +47,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
     'django_extensions',
     'debug_toolbar',
+    'django_filters',
     'rest_framework',
+    'rest_framework.authtoken',
     'users',
     'items',
     'reviews',
+    'carts',
 ]
 # Application definition
 
@@ -147,3 +158,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 USE_THOUSAND_SEPARATOR = True
 THOUSAND_SEPARATOR = ' '
 NUMBER_GROUPING = 0
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Basic': {
+            'type': 'basic',
+        },
+        'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+        },
+    },
+}

@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -12,7 +12,7 @@ class Reviews(models.Model):
         PUBLISHED = 'PUB', _('опубликован')
         REJECTED = 'REJ', _('отклонен')
 
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reviews')
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='reviews')
     text = models.TextField()
     created_at = models.DateTimeField(default=datetime.now)
     published_at = models.DateTimeField(null=True)
