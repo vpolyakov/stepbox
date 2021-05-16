@@ -1,5 +1,6 @@
 from django.db.models import Sum, F, DecimalField
 from rest_framework import serializers
+from rest_framework.generics import get_object_or_404
 
 from carts.models import Cart, CartItem
 from items.models import Item
@@ -49,6 +50,7 @@ class CartItemCreateEditSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = self.context['request'].user
         item = validated_data.get('item_id')
+        get_object_or_404(Item, pk=item)
         cart_item = user.cart.cart_items.create(
             item_id=item,
             quantity=validated_data.get('quantity'),
@@ -59,6 +61,7 @@ class CartItemCreateEditSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         item = validated_data.get('item_id')
         if item:
+            get_object_or_404(Item, pk=item)
             instance.item_id = item
             instance.price = Item.objects.get(id=item).price
 
